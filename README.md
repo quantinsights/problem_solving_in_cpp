@@ -20,3 +20,9 @@ This is a small collection of routines and algorithms to solve selected problems
 * [Declarations](modern_cpp_programming/intro_to_c++/declarations.cpp)
 * [Structure of declarations](modern_cpp_programming/intro_to_c++/structure_of_declarations.cpp)
 * [Identifiers in C++](modern_cpp_programming/intro_to_c++/names.cpp)
+
+## Computational Physics
+
+### Harmonic Oscillators
+
+* [Simple Harmonic Motion](computational_physics/harmonic_oscillators/simple_pendulum.cpp)
