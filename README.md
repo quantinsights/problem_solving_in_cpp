@@ -14,6 +14,6 @@ This is a small collection of routines and algorithms to solve selected problems
 
 * [Hello World](modern_cpp_programming/intro_to_c++/hello_world.cpp)
 * [Declarations and assignments in C++](modern_cpp_programming/intro_to_c++/declarations_and_assignments.cpp)
-* [What are in cin and cout?](modern_cpp_programming/intro_to_c++/get_info.cpp)
+* [Reading terminal input and producing output](modern_cpp_programming/intro_to_c++/get_info.cpp)
 * [Using a library function - sqrt()](modern_cpp_programming/intro_to_c++/function_basics.cpp)
 * [Writing a custom function to calculate the value of an investment in a risk-free bank account](modern_cpp_programming/intro_to_c++/user_defined_funcs.cpp)
