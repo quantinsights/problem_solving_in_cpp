@@ -12,5 +12,4 @@ This is a small collection of routines and algorithms to solve selected problems
 
 ### C++ Basics
 
-* http://github.com - automatic!
-[GitHub](http://github.com)
+* [Hello World](modern_cpp_programming/intro_to_c++/hello_world.cpp)
