@@ -18,3 +18,4 @@ This is a small collection of routines and algorithms to solve selected problems
 * [Using a library function - sqrt()](modern_cpp_programming/intro_to_c++/function_basics.cpp)
 * [Writing a custom function to calculate the value of an investment in a risk-free bank account](modern_cpp_programming/intro_to_c++/user_defined_funcs.cpp)
 * [Declarations](modern_cpp_programming/intro_to_c++/declarations.cpp)
+* [Structure of declarations](modern_cpp_programming/intro_to_c++/structure_of_declarations.cpp)
