@@ -26,3 +26,9 @@ This is a small collection of routines and algorithms to solve selected problems
 ### Harmonic Oscillators
 
 * [Simple Harmonic Motion](computational_physics/harmonic_oscillators/simple_pendulum.cpp)
+
+## Numerical Algorithms
+
+### Python Notebooks
+
+* [Systems of Linear Algebraic equations](numerical_algorithms/systems_of_linear_algebraic_equations/systems_of_linear_algebraic_equations.ipynb)
