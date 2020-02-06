@@ -33,7 +33,7 @@ This is a small collection of routines and algorithms to solve selected problems
 
 * [Systems of Linear Algebraic equations](numerical_algorithms/systems_of_linear_algebraic_equations/systems_of_linear_algebraic_equations.ipynb)
 
-### Naive Implementation
+### Implementation
 
 * [Gaussian elimination with partial pivoting](numerical_algorithms/systems_of_linear_algebraic_equations/gauss_elim.cpp)
 
