@@ -36,4 +36,4 @@ This is a small collection of routines and algorithms to solve selected problems
 ### Implementation
 
 * [Gaussian elimination with partial pivoting](numerical_algorithms/systems_of_linear_algebraic_equations/gauss_elim.cpp)
-
+* [LU Factorization](numerical_algorithms/systems_of_linear_algebraic_equations/ludcmp.cpp)
