@@ -8,13 +8,12 @@
 
 This is a small collection of routines and algorithms to solve selected problems in science and mathematics. The best way to learn anything is to build toy projects. 
 
-## Modern C++ Programming
+## C++ for Financial Engineers
 
 ### C++ Basics
 
-* [Hello World](cpp_programming/the_basics.cpp)
-* [Basic types](cpp_programming/types.cpp)
-* [Loop statements and risk-free bond mathematics](cpp_programming/statements.cpp)
+* [An introduction to C++](cpp_programming/the_basics.cpp)
+* [Basic financial mathematics](cpp_programming/bond_utils.cpp)
 
 ## Computational Physics
 
