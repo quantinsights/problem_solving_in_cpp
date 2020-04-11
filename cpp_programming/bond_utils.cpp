@@ -10,10 +10,11 @@ using boost::gregorian::date_duration;
 
 // 1. The Time value of money.
 
+//
 // The value of any financial contract is present value of its expected cashflows.
 // Interest is cost of borrowing money. Let r be the annual interest rate. If the interest
 // is compounded once per year, the future value of P dollars after n years is 
-// FV = P(1+r)^n.
+// FV = P(1+r)^n
 
 // To look at it from another perspective, X dollars n years from now, are worth
 // X(1+r)^(-n) today, its present value. The process of obtaining the present value
@@ -40,7 +41,7 @@ double fv_discrete(double P, double r, double m, double n)
 
 double pv_discrete(double X, double r, double m, double n)
 {
-    return P * pow((1 + r / m), -m * n);
+    return X * pow((1 + r / m), -m * n);
 }
 
 // From Calculus, we know that,
@@ -67,6 +68,21 @@ double pv_continuous(double P, double r, double t) {
 }
 
 // Annuities.
+
+// An ordinary annuity pays out the same C dollars at the end of each year for n years.
+// For a rate r, the future value of the annuity at the end of the year is :
+
+//tex:
+// $\begin{align}
+// FV &= C(1+r)^{n-1}+\ldots+C(1+r)+C\\
+//    &= \sum_{i=0}^{n-1}C(1+r)^i\\
+//    &= C\frac{(1+r)^n - 1}{(1+r)}
+// \end{align}$
+
+double fv_annuity_discrete(double C, double r, double t) {
+    return C * (pow((1 + r), t) - 1) / (1 + r);
+}
+
 
 // Risk-free Bonds.
 
