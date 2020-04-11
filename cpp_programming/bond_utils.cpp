@@ -76,13 +76,41 @@ double pv_continuous(double P, double r, double t) {
 // $\begin{align}
 // FV &= C(1+r)^{n-1}+\ldots+C(1+r)+C\\
 //    &= \sum_{i=0}^{n-1}C(1+r)^i\\
-//    &= C\frac{(1+r)^n - 1}{(1+r)}
+//    &= C\frac{(1+r)^n - 1}{r}
+// \end{align}$
+
+// The present value of the annuity today is :
+
+//tex:
+// $\begin{align}
+// PV &= \frac{C}{1+r}+\frac{C}{(1+r)^2}+\ldots+\frac{C}{(1+r)^n}\\
+//    &= \frac{C}{(1+r)}\frac{(1+r)^{-n}-1}{(1+r)^{-1}-1}\\
+//    &= C\frac{1-(1+r)^{-n}}{r}
 // \end{align}$
 
 double fv_annuity_discrete(double C, double r, double t) {
-    return C * (pow((1 + r), t) - 1) / (1 + r);
+    return (C/r) * (pow((1 + r), t) - 1);
 }
 
+double pv_annuity_discrete(double C, double r, double t)
+{
+    return (C / (1 + r)) * (1 - pow((1 + r), -t)) / r;
+}
+// Example.
+
+// The PV of an annuity of $100 per annum for 5 years at an annual interest rate of 6.25%
+// is :
+
+// 100/0.0625 [1-(1+0.0625)^(-5)] = $418.3869
+
+// Amortization.
+
+// Amortization is the method of repaying a loan through regular payments of interest and
+// principal. The size of the loan is - the original balance is reduced - is reduced
+// by the principal part of the payment. As the principal gets paid down over the term of
+// the loan, the interest part of the payment diminishes.
+
+// Home mortgages are typically amortized. 
 
 // Risk-free Bonds.
 
