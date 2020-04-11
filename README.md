@@ -14,7 +14,7 @@ This is a small collection of routines and algorithms to solve selected problems
 
 * [Hello World](cpp_programming/the_basics.cpp)
 * [Basic types](cpp_programming/types.cpp)
-* [Risk-free bond mathematics using loop statements](cpp_programming/statements.cpp)
+* [Loop statements and risk-free bond mathematics](cpp_programming/statements.cpp)
 
 ## Computational Physics
 
