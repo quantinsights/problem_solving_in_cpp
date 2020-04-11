@@ -8,15 +8,79 @@
 using boost::gregorian::date;
 using boost::gregorian::date_duration;
 
-// Iteration statements.
+// 1. The Time value of money.
 
-// A loop can be expressed as a for-, while- or do-while statement:
+// The value of any financial contract is present value of its expected cashflows.
+// Interest is cost of borrowing money. Let r be the annual interest rate. If the interest
+// is compounded once per year, the future value of P dollars after n years is 
+// FV = P(1+r)^n.
 
-// while(condition) statement
+// To look at it from another perspective, X dollars n years from now, are worth
+// X(1+r)^(-n) today, its present value. The process of obtaining the present value
+// is called discounting.
 
-// do statement while(expression);
+// If interest is compounded m times a year, then the rate per period is r/m. The total
+// number of periods are mn. The future value is
 
-// for(initialization;termination;expression) statement;
+// FV = P(1+r/m)^(mn).
+
+double fv_discrete(double P, double r, double m, double n)
+{
+    return P * pow((1 + r / m), m * n);
+}
+
+// Example. With an annual interest rate of 10% compounded twice per annum, each dollar
+// will grow to be [1 + (0.1)/2]^2 = $1.1025 1 year from now. The rate is therefore 
+// equivalent to an interest rate of 10.25% compounded once per annum.
+
+// Example. An insurance company has to pay $20 million dollars 4 years from now to 
+// pensioners. Suppose that it can invest money at an annual rate 7% compounded 
+// semi-annually. The company should therefore invest 20,000,000/(1+(0.07/2))^8 
+// = $15,188,231 today.
+
+double pv_discrete(double X, double r, double m, double n)
+{
+    return P * pow((1 + r / m), -m * n);
+}
+
+// From Calculus, we know that,
+
+// lim_(x->0) (1+1/x)^x = e.
+
+// So, 
+
+//      lim_(m->infinity) (1+r/m)^mn
+//    = lim_(r/m->0) (1+r/m)^ { m/r x rn}
+//    = lim_(r/m->0) [(1+r/m)^(m/r)]^rn
+//    = e^rn
+
+// Thus, as m->infinity, we obtain continuous compounding.
+
+// FV = e^rn.
+
+double fv_continuous(double P, double r, double t) {
+    return P * exp(r * t);
+}
+
+double pv_continuous(double P, double r, double t) {
+    return P * exp(-r * t);
+}
+
+// Annuities.
+
+// Risk-free Bonds.
+
+// A bond is a financial contract between an issuer and the bondholders.
+// On the issue date, investors lend the principal notional to a corporate/sovereign,
+// in exchange for bonds. The maturity date of the bond specifies the date on which the loan
+// will be repaid. A bond pays interest at a coupon rate on its par value until 
+// the maturity date. 
+
+// Treasury securities with maturities of 1 year or less are discount securities : the T-Bills.
+// Treasury securities with original maturities between 2 and 10 years are called T-Notes.
+// Those with maturities greater than 10 years are called T-Bonds.
+
+// A bond has a par value. The par value 
 
 struct discountCurve {
     // We assume that the discountCurve is a piece-wise constant function
