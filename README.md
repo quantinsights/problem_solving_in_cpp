@@ -8,7 +8,7 @@
 
 This is a small collection of routines and algorithms to solve selected problems in science and mathematics. The best way to learn anything is to build toy projects. 
 
-## Modern C++ Programming
+## C++ for Financial Engineers
 
 ### C++ Basics
 
