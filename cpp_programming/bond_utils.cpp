@@ -1,3 +1,9 @@
+// ==========================================================================================
+//  C++ for financial engineering series.
+//
+//                          2. Basic Financial Mathematics
+// ------------------------------------------------------------------------------------------
+
 #include<iostream>
 #include<cmath>
 #include<vector>
@@ -67,7 +73,7 @@ double pv_continuous(double P, double r, double t) {
     return P * exp(-r * t);
 }
 
-// Annuities.
+// 2. Annuities.
 
 // An ordinary annuity pays out the same C dollars at the end of each year for n years.
 // For a rate r, the future value of the annuity at the end of the year is :
@@ -103,16 +109,54 @@ double pv_annuity_discrete(double C, double r, double t)
 
 // 100/0.0625 [1-(1+0.0625)^(-5)] = $418.3869
 
-// Amortization.
+// 3. Amortization.
 
 // Amortization is the method of repaying a loan through regular payments of interest and
 // principal. The size of the loan is - the original balance is reduced - is reduced
 // by the principal part of the payment. As the principal gets paid down over the term of
 // the loan, the interest part of the payment diminishes.
 
-// Home mortgages are typically amortized. 
+// Home mortgages are typically amortized.
 
-// Risk-free Bonds.
+// Example. Suppose a home buyer takes a 15-year $250,000 mortgage at an 8% rate of interest
+// Solving the ordinary annuity equation for C, with PV = 250,000, n=15x12=180, r=0.08/12=0.00666
+// we get C = 
+
+double amort_cashflow(double PV, double n, double r)
+{
+    // We simply invert the PV function of an ordinary annuity and make C the dependent variable
+    // and PV the independent variable.
+    // PV = C/r [1 - (1+r)^-n]
+    // C = (PV r) / [1 - (1+r)^-n]
+
+    return (PV * r) / (1 - pow((1 + r), -n));
+}
+
+// This helper function prints an amortization chart.
+
+void amort_chart(double PV, double n, double r)
+{
+    double C = amort_cashflow(PV, n, r);
+
+    // Pretty-printing the amortization table.
+    // Header row.
+    std::cout << "Month\t" << "Payment\t\t" << "Interest\t" << "Prin Pmt\t" << "Outst.\n";
+    std::cout << "-----\t" << "-------\t\t" << "--------\t" << "--------\t" << "------\n";
+
+    double p = PV;
+    double int_pmt = 0.0;
+    double princ_pmt = 0.0;
+    // Body of the table.
+    for (int i = 1; i <= n; ++i)
+    {
+        int_pmt = (r * p);
+        princ_pmt = C - int_pmt;
+        p -= princ_pmt;
+        std::cout << i << "\t" << C << "\t\t" << int_pmt << "\t\t" << princ_pmt << "\t\t" << p << "\n";
+    }
+}
+
+// 4. Risk-free Bonds.
 
 // A bond is a financial contract between an issuer and the bondholders.
 // On the issue date, investors lend the principal notional to a corporate/sovereign,
@@ -228,6 +272,13 @@ int main() {
     double discFactor = df(discount_curve, date(2020, 1, 1), date(2020, 6, 30));
     std::cout << "Discount factor = " << discFactor << std::endl;
     std::cout << "Forward = " << df_to_zero(discFactor, date(2020, 1, 1), date(2020, 6, 30)) << std::endl;
+
+    // Find the amortized cash-flow for a housing mortgage
+    double C = amort_cashflow(250000.00, 180.0, 0.006667);
+    std::cout << "Cashflow = " << C << std::endl;
+
+    // Pretty-print an amortization table
+    amort_chart(250000.00, 180.0, 0.006667);
 
     return 0;
 }
