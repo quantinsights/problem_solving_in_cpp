@@ -156,7 +156,39 @@ void amort_chart(double PV, double n, double r)
     }
 }
 
-// 4. Risk-free Bonds.
+// 4. Discount curves and discount factors.
+
+// Investors are risk-averse. They perceive higher credit risk when lending/depositing money for longer time-periods.
+// Markets demand a risk-premium for longer maturities by way of higher interest rates. For instance, the rate for 
+// an ON(overnight) deposit may be 4%, the rate for 1M(month) deposit may be 6%, and for 1Y deposit may be 12%.
+// Markets have different rates for each maturity.
+
+// Instrument   Quote Ask(%)    Underlying      Start Date      Maturity Date
+// ---------------------------------------------------------------------------
+// Depo ON      0.040           Euribor1D       01-JAN-2020     02-JAN-2020
+// Depo TN      0.040           Euribor1D       02-JAN-2020     03-JAN-2020
+// Depo SN      0.040           Euribor1D       01-JAN-2020     03-JAN-2020
+// Depo 1W      0.070           Euribor1W       01-JAN-2020     08-JAN-2020
+// Depo 1M      0.110           Euribor1M       01-JAN-2020     01-FEB-2020
+// Depo 3M      0.180           Euribor3M       01-JAN-2020     01-APR-2020
+// Depo 6M      0.320           Euribor6M       01-JAN-2020     01-JUL-2020
+// Depo 12M     0.540           Euribor12M      01-JAN-2020     01-JAN-2021
+
+//tex:
+// This set of maturities and corresponding rates $\{(t,r(0,t))\}$ is called a rate-curve.
+
+// Rates can be expressed as spot-to-maturity or forwards. Since, the future value
+// of an investment at the end of T=2 years, must be equal to the investing cash for t=1 year,
+// and rolling over this deposit; re-investing the proceeds for another 1 year, 
+// mathematically, we must have-
+
+//tex:
+//$(1+r(0,s))(1+f(s,t))=(1+r(0,t))$
+
+// f(s,t) is called the forward.
+
+
+// 5. Risk-free Bonds.
 
 // A bond is a financial contract between an issuer and the bondholders.
 // On the issue date, investors lend the principal notional to a corporate/sovereign,
@@ -168,7 +200,8 @@ void amort_chart(double PV, double n, double r)
 // Treasury securities with original maturities between 2 and 10 years are called T-Notes.
 // Those with maturities greater than 10 years are called T-Bonds.
 
-// A bond has a par value. The par value 
+// A bond has a par value. The par value of the bond is what causes the net present value of all
+// cash-flows to be zero.
 
 struct discountCurve {
     // We assume that the discountCurve is a piece-wise constant function
